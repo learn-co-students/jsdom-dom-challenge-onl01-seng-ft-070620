@@ -23,11 +23,22 @@ const plusCounter = function() {
   counter.innerText = counterNum + 1;
 }
 
-const pauseCounter = function() {
+function pauseCounter() {
   clearInterval(timer);
   minus.disabled = true;
   plus.disabled = true;
   heart.disabled = true;
+  pause.innerText = "resume";
+  pause.addEventListener('click', resumeTimer);
 }
 
-const timer = setInterval(displayCounter, 1000);
+function resumeTimer() {
+  setInterval(displayCounter, 1000);
+  minus.disabled = false;
+  plus.disabled = false;
+  heart.disabled = false;
+  pause.innerText = "pause";
+  pause.addEventListener('click', pauseCounter);
+}
+
+let timer = setInterval(displayCounter, 1000);

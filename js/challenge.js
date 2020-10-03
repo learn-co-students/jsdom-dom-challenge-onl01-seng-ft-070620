@@ -11,6 +11,7 @@ const displayCounter = function() {
   minus.addEventListener('click', minusCounter);
   plus.addEventListener('click', plusCounter);
   pause.addEventListener('click', pauseCounter);
+  heart.addEventListener('click', like);
 }
 
 const minusCounter = function() {
@@ -23,12 +24,21 @@ const plusCounter = function() {
   counter.innerText = counterNum + 1;
 }
 
+const like = function() {
+  let likesUl = document.getElementsByClassName('likes')[0];
+  const newItem = document.createElement('li');
+  let displayLike = `${counter.innerText} has been liked`;
+  newItem.innerText = displayLike;
+  likesUl.appendChild(newItem);
+}
+
 function pauseCounter() {
   clearInterval(timer);
   minus.disabled = true;
   plus.disabled = true;
   heart.disabled = true;
   pause.innerText = "resume";
+  timerStatus = 0;
   pause.addEventListener('click', resumeTimer);
 }
 

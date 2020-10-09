@@ -1,4 +1,4 @@
-# The DOM Challenge
+# The DOM Challenge 
 
 If you open up index.html in the browser, you'll find a small application. It has a few features:
 

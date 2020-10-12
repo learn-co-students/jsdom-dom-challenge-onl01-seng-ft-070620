@@ -3,6 +3,8 @@ const minus = document.getElementById("minus");
 const plus = document.getElementById("plus");
 const heart = document.getElementById("heart");
 const pause = document.getElementById("pause");
+const commentForm = document.getElementById("comment-form")
+const commentList = document.getElementById("list")
 
 const displayCounter = function() {
     const counterNum = parseInt(counter.innerText);
@@ -39,15 +41,26 @@ function pauseCounter() {
     pause.innerText = "resume";
     timerStatus = 0;
     pause.addEventListener("click", resumeTimer);
-  }
-  
-  function resumeTimer() {
+}
+
+function resumeTimer() {
     setInterval(displayCounter, 1000);
     minus.disabled = false;
     plus.disabled = false;
     heart.disabled = false;
     pause.innerText = "pause";
     pause.addEventListener("click", pauseCounter);
-  }
-  
-  let timer = setInterval(displayCounter, 1000);
+}
+
+let timer = setInterval(displayCounter, 1000);
+
+commentForm.addEventListener("submit", addComment)
+
+function addComment(event) {
+    event.preventDefault()
+    let commentText = event.target.children[0].value
+    let newComment = document.createElement("li")
+    newComment.textContent = commentText
+    commentList.appendChild(newComment)
+    event.target.reset()
+}
